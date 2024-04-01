@@ -74,7 +74,7 @@ const ChartComponent = ( ) => {
   const fetchData = async (id) => {
     try {
       const response = await fetch(
-        `https://ghostqa.dev.clocksession.com//api/performance-tests/${id}/monitor_container_run/`
+        `https://ghostqa.dev.clocksession.com/api/performance-tests/${id}/monitor_container_run/`
       );
       const jsonData = await response.json();
       console.log("jsonData", jsonData);
