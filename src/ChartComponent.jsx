@@ -65,8 +65,8 @@ const ChartComponent = ( ) => {
       setTestId(id);
       fetchData(id);
     }else{
-        setTestId(31);
-        fetchData(31);
+        setTestId(32);
+        fetchData(32);
     }
     fetchData(id);
   }, [ ]);
@@ -74,7 +74,7 @@ const ChartComponent = ( ) => {
   const fetchData = async (id) => {
     try {
       const response = await fetch(
-        `http://65.1.188.67:8010/api/performance-tests/${id}/monitor_container_run/`
+        `https://ghostqa.dev.clocksession.com//api/performance-tests/${id}/monitor_container_run/`
       );
       const jsonData = await response.json();
       console.log("jsonData", jsonData);
@@ -90,7 +90,7 @@ const ChartComponent = ( ) => {
   }
 
   // Group data by intervals of 10 seconds
-  const groupedData = groupDataByInterval(data, 600); // 10000 milliseconds = 10 seconds
+  const groupedData = groupDataByInterval(data, 1000); // 10000 milliseconds = 10 seconds
 
   // Aggregate data within each interval
   const aggregatedData = groupedData.map((group) => {
