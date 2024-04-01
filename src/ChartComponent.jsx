@@ -174,7 +174,7 @@ const ChartComponent = ( ) => {
     datasets: [
       {
         label: "bandwidth",
-        data: Latency,
+        data: bandwidth,
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.1,
