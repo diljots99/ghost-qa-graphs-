@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useParams } from 'react-router-dom';
 
 ChartJS.register(
   CategoryScale,
@@ -48,17 +49,27 @@ const groupDataByInterval = (data, interval) => {
   return groups;
 };
 
-const ChartComponent = (testId ) => {
+const ChartComponent = ( ) => {
   const [data, setData] = useState([]);
-
+  const [testId, setTestId] = useState(null);
+  console.log('testId', testId);
   useEffect(() => {
-    fetchData();
-  }, [testId ]);
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('testId');
+    if (id) {
+      setTestId(id);
+      fetchData(id);
+    }else{
+        setTestId(31);
+        fetchData(31);
+    }
+    fetchData(id);
+  }, [ ]);
 
-  const fetchData = async () => {
+  const fetchData = async (id) => {
     try {
       const response = await fetch(
-        "http://65.1.188.67:8010/api/performance-tests/31/monitor_container_run/"
+        `http://65.1.188.67:8010/api/performance-tests/${id}/monitor_container_run/`
       );
       const jsonData = await response.json();
       console.log("jsonData", jsonData);
