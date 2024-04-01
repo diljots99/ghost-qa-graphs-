@@ -65,8 +65,8 @@ const ChartComponent = ( ) => {
       setTestId(id);
       fetchData(id);
     }else{
-        setTestId(32);
-        fetchData(32);
+        setTestId(33);
+        fetchData(33);
     }
     fetchData(id);
   }, [ ]);
