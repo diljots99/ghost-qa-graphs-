@@ -90,7 +90,7 @@ const ChartComponent = ( ) => {
   }
 
   // Group data by intervals of 10 seconds
-  const groupedData = groupDataByInterval(data, 1000); // 10000 milliseconds = 10 seconds
+  const groupedData = groupDataByInterval(data, 700); // 10000 milliseconds = 10 seconds
 
   // Aggregate data within each interval
   const aggregatedData = groupedData.map((group) => {
@@ -127,7 +127,10 @@ const ChartComponent = ( ) => {
     };
   });
   const hitRates = aggregatedData.map(item => item.hitRate);
-  const timestamps = aggregatedData.map((item) => item.timestamp);
+  const timestamps = aggregatedData.map(item => {
+    const date = new Date(item.timestamp);
+    return date.toLocaleString();
+  });
   const elapsedTimes = aggregatedData.map((item) => item.elapsed);
   const users = aggregatedData.map((item) => item.allThreads);
   const Latency = aggregatedData.map((item) => item.Latency);
